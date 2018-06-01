@@ -7,7 +7,7 @@ client.prefix  = 'g!';
 client.ownerID = '144645791145918464';
 client.color = 0xDFE0D2;
 client.footer = 'Created By Plexi Development • https://discord.gg/plexidev';
-client.ignoreBots = false;
+client.ignoreBots = true;
 client.guildPings = new Map();
 
 // Extension Scripts
