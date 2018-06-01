@@ -7,7 +7,7 @@ client.prefix  = 'g!';
 client.ownerID = '144645791145918464';
 client.color = 0xDFE0D2;
 client.footer = 'Created By Plexi Development • https://discord.gg/plexidev';
-client.ignoreBots = true;
+client.ignoreBots = false;
 client.guildPings = new Map();
 
 // Extension Scripts
@@ -27,9 +27,7 @@ client.on('ready', async () => {
 
 client.on('message', message => {
   
-  // Return Statements
   if (message.author.bot) return;
-  if (message.member.roles.find(r => r.name === 'Muted')) return;
   if (message.channel.type !== 'text') {
     
     const embed = new Discord.MessageEmbed()
@@ -41,6 +39,19 @@ client.on('message', message => {
     message.channel.send(embed);
     
   }
+  
+  if (!message.guild.me.hasPermission('ADMINISTRATOR') && message.content.startsWith(client.prefix)) {
+   
+    const embed = new Discord.MessageEmbed()
+      .setColor(client.color)
+      .setFooter('Sorry, to ensure all active servers get the best possible speed, all servers where the bot does not have Administrator are disabled. If you don\'t feel comfortable with this you may download and host the bot yourself at our GitHub repo.')
+    
+    return message.channel.send(embed);
+    
+  } else if (!message.guild.me.hasPermission('ADMINISTRATOR')) return;
+  
+  // Return Statements
+  if (message.member.roles.find(r => r.name === 'Muted')) return;
   
   // Collect Pings
   let user = { id: message.author.id, tag: message.author.tag };
@@ -65,10 +76,7 @@ client.on('message', message => {
     pinged = true;
     let roles = message.mentions.roles.array();
     for (var i in roles) {
-      if (roles[i].user.bot || roles[i].id === user.id) continue;
-      else {
-         pings.push({ target: `@${roles[i].name}`, user: user, timestamp: Date.now() });
-      }
+      pings.push({ target: `@${roles[i].name}`, user: user, timestamp: Date.now() });
     }
   }
   
@@ -104,6 +112,8 @@ client.on('message', message => {
 client.login(process.env.TOKEN);
 
 client.on('guildBanAdd', async guild => {
+  
+  if (!guild.me.hasPermission('ADMINISTRATOR')) return;
 
   // Fetch audit log
   let audit = await client.tools.fetchLastAudit(guild, 'MEMBER_BAN_ADD');
@@ -141,6 +151,8 @@ client.on('guildBanAdd', async guild => {
 });
 
 client.on('guildMemberRemove', async member => {
+  
+  if (!member.guild.me.hasPermission('ADMINISTRATOR')) return;
   
   // Fetch Audit Log
   let audit = await client.tools.fetchLastAudit(member.guild, 'MEMBER_KICK');
@@ -182,6 +194,8 @@ client.on('guildMemberRemove', async member => {
 });
 
 client.on('channelDelete', async channel => {
+  
+  if (!channel.guild.me.hasPermission('ADMINISTRATOR')) return;
 
   // Fetch Audit Log
   let audit = await client.tools.fetchLastAudit(channel.guild, 'CHANNEL_DELETE');
@@ -211,6 +225,8 @@ client.on('channelDelete', async channel => {
 })
 
 client.on('roleDelete', async role => {
+  
+  if (!role.guild.me.hasPermission('ADMINISTRATOR')) return;
   
   // Fetch Audit Log
   let audit = await client.tools.fetchLastAudit(role.guild, 'ROLE_DELETE');

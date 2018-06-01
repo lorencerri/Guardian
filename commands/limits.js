@@ -30,14 +30,14 @@ exports.run = async(client, message, args, tools) => {
       `\n__Pings__`,
       `7. Per Minute: \`${limits.pingsPM || 5}\``,
       `8. Per Hour: \`${limits.pingsPH || 15}\``,
-      `Action: **\`Add Muted Role\`**\n`
+      `Action: **\`Add Muted Role\`**`
     ]
 
     let msg = '';
     for (var i in data) msg += `${data[i]}\n`;
 
     // Update Embed
-    embed.setDescription(`\n*If a user reaches any of these values,\nthe follow action will be applied to their account.*\n**${msg}**`)
+    embed.setDescription(`\n*If a user reaches any of these values,\nthe follow action will be applied to their account.*\n**${msg}**\n`)
          .addField('Changing Limits...', '**`g!limits index value`**\n\n**Example: \`g!limits 7 10\`**\nThis would set the max pings per minute to 10');
 
     // Send Embed
