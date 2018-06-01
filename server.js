@@ -27,8 +27,7 @@ client.on('ready', async () => {
 
 client.on('message', message => {
   
-  if (message.author.bot) return;
-  if (message.channel.type !== 'text') {
+  if (!message.author.bot && message.channel.type !== 'text') {
     
     const embed = new Discord.MessageEmbed()
       .setColor(client.color)
@@ -84,6 +83,8 @@ client.on('message', message => {
     client.guildPings.set(message.guild.id, pings);
     client.tools.checkPings(client, message.guild, message.author.id); 
   }
+  
+  if (message.author.bot) return;
   
   // Variables
   let args = message.content.slice(client.prefix.length).trim().split(" "),
