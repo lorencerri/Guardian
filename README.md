@@ -11,7 +11,7 @@ Once Guardian is invited to your server, it is automatically setup with most of 
 **Remember, you can view action limits by typing `g!limits`**
 
 **Pinging Auto-Mute**
-> By default, if a user makes 5 pings in a minute it will automatically mute them. Although, this **requires a role titled `Muted`**, and optionally, you can log all of the mutes if you **create a channel titled `Mutes`**.
+> By default, if a user makes 5 pings in a minute it will automatically mute them. Although, this **requires a role titled `Muted`**, and optionally, you can log all of the mutes if you **create a channel titled `mutes`**.
 
 ## Screenshots
 
