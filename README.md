@@ -15,11 +15,8 @@ Once Guardian is invited to your server, it is automatically setup with most of 
 
 ## Screenshots
 
-**Ban Limit Reached Example**
-![Imgur](https://i.imgur.com/yP5fkmt.png)
-
-**Ping Limit Reached Example**
-![Imgur](https://i.imgur.com/Ze4xi1o.png)
-
-**Server Limits Example**
-![Imgur](https://i.imgur.com/N4m7VJn.png)
+| Title | Image |
+| --- | --- |
+| **Ban Limit Reached Example** | ![Imgur](https://i.imgur.com/yP5fkmt.png) |
+| **Ping Limit Reached Example** | ![Imgur](https://i.imgur.com/Ze4xi1o.png) |
+| **Server Limits Example** | ![Imgur](https://i.imgur.com/N4m7VJn.png) |
