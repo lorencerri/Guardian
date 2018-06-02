@@ -9,6 +9,8 @@ client.color = 0xDFE0D2;
 client.footer = 'Created By Plexi Development • https://discord.gg/plexidev';
 client.ignoreBots = true;
 client.guildPings = new Map();
+client.isNode = false;
+client.nodeID = '';
 
 // Extension Scripts
 client.tools = require('./functions.js');
@@ -112,11 +114,13 @@ client.on('message', message => {
     }
 
     if (message.author.bot) return;
+    
 
     // Variables
     let args = message.content.slice(client.prefix.length).trim().split(" "),
         cmd = args.shift().toLowerCase();
 
+    if (cmd !== 'limits' && !args[0] && client.isNode) return;
     if (!message.content.startsWith(client.prefix)) return;
 
     if (cmd === 'help') cmd = 'commands';
