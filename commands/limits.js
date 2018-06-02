@@ -65,8 +65,13 @@ exports.run = async(client, message, args, tools) => {
     limits[index] = args[1];
     client.db.set(`actionLimits_${message.guild.id}`, limits);
     
-    embed.setTitle('Successfully Updated')
-         .setFooter(`Updated ${index} to ${args[1]}`)
+    if (!client.isNode) {
+      embed.setTitle('Successfully Updated | Primary Server')
+           .setFooter(`Updated ${index} to ${args[1]}`)
+    } else {
+      embed.setTItle(`Successfully Updated | Node ${client.nodeID}`)
+          .setFooter(`Updated ${index} to ${args[1]} • g!nodes for more info`)
+    }
     
     message.channel.send(embed);
     

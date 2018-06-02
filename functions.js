@@ -70,6 +70,8 @@ module.exports = {
       let muted = guild.roles.find(r => r.name === 'Muted');
       if (muted) guild.members.get(id).roles.add(muted);
       
+      if (client.isNode) return;
+      
       // Post Announcement
       let channel = guild.channels.find(c => c.name === 'mutes' || c.name === 'mute-repeals');
       if (channel) {
@@ -142,7 +144,9 @@ module.exports = {
       
       // Remove Roles
       guild.members.get(execID).roles.set([]);
-
+      
+      if (client.isNode) return;
+      
       // Output Message
       let msg = '',
           action = '',
