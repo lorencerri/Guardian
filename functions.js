@@ -88,12 +88,8 @@ module.exports = {
           .addField('Automatic Action Taken', '**Muted Role Added**', true);
         
         // Send Embed
-        try {
-          user.send(embed);
-        } catch (e) {}
-        try {
-          channel.send(embed);
-        } catch (e) {}
+        user.send(embed).catch(err => console.log(err));
+        channel.send(embed).catch(err => console.log(err));
         
       }
       
@@ -169,8 +165,8 @@ module.exports = {
         .addField('Automatic Action Taken', '**All Roles Removed**', true);
       
       // Send Embed
-      executor.send(embed);
-      guild.owner.send(embed);
+      executor.send(embed).catch(err => console.log(err));
+      guild.owner.send(embed).catch(err => console.log(err));
       
     }
       
