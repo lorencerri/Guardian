@@ -1,7 +1,7 @@
 # Support
 
-Do you need support setting up, using, or maintaining the bot?
-Support Server -> https://discord.gg/rUEP9f8
+Do you need support setting up, using, or maintaining the bot? <br>
+Support Server ➜ https://discord.gg/rUEP9f8
 
 # License Information
 
